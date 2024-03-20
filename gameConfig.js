@@ -1,9 +1,3 @@
-var container = document.querySelector("#unity-container");
-var canvas = document.querySelector("#unity-canvas");
-var loadingBar = document.querySelector("#unity-loading-bar");
-var progressBarFull = document.querySelector("#unity-progress-bar-full");
-var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-var warningBanner = document.querySelector("#unity-warning");
 function unityShowBanner(msg, type) {
   function updateBannerVisibility() {
     warningBanner.style.display = warningBanner.children.length
@@ -15,8 +9,7 @@ function unityShowBanner(msg, type) {
   warningBanner.appendChild(div);
   if (type == "error") div.style = "background: red; padding: 10px;";
   else {
-    if (type == "warning")
-      div.style = "background: yellow; padding: 10px;";
+    if (type == "warning") div.style = "background: yellow; padding: 10px;";
     setTimeout(function () {
       warningBanner.removeChild(div);
       updateBannerVisibility();
@@ -37,18 +30,7 @@ var config = {
   productVersion: "1.0",
   showBanner: unityShowBanner,
 };
-if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-  var meta = document.createElement("meta");
-  meta.name = "viewport";
-  meta.content =
-    "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
-  document.getElementsByTagName("head")[0].appendChild(meta);
-  container.className = "unity-mobile";
-  canvas.className = "unity-mobile";
-} else {
-  container.className = "unity-mobile";
-  canvas.className = "unity-mobile";
-}
+
 loadingBar.style.display = "block";
 
 var script = document.createElement("script");
@@ -60,7 +42,7 @@ script.onload = () => {
     .then((unityInstance) => {
       loadingBar.style.display = "none";
       fullscreenButton.onclick = () => {
-        if (unityInstance.SetFullscreen) unityInstance.SetFullscreen(1);
+      onFullScreenButtonClick(unityInstance);
       };
     })
     .catch((message) => {
@@ -69,35 +51,3 @@ script.onload = () => {
 };
 
 document.body.appendChild(script);
-
-
-window.addEventListener("orientationchange", function () {
-  if (window?.orientation === 90 || window?.orientation === -90) {
-  } else {
-  }
-});
-
-window.alert = function () {};
-function requestFullscreen() {
-  var canvas = document.getElementById("unity-canvas"); // Replace "gameCanvas" with the ID of your Unity WebGL canvas element
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-  } else if (canvas.mozRequestFullScreen) {
-    /* Firefox */
-    canvas.mozRequestFullScreen();
-  } else if (canvas.webkitRequestFullscreen) {
-    /* Chrome, Safari & Opera */
-    canvas.webkitRequestFullscreen();
-  } else if (canvas.msRequestFullscreen) {
-    /* IE/Edge */
-    canvas.msRequestFullscreen();
-  }
-}
-requestFullscreen();
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape" && document.fullscreenElement) {
-    event.preventDefault();
-  }
-});
-WebGLInput.captureAllKeyboardInput = false;

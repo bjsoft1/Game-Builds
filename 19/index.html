@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity WebGL Player | DoodleDawdle</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas
+        id="unity-canvas"
+        tabindex="-1"
+      ></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"></div>
+      <div id="unity-fullscreen-button"></div>
+    </div>
+    <script src="../gameHelper.js"></script>
+    <script src="../gameConfig.js"></script>
+  </body>
+</html>
+
+<style>
+  #unity-fullscreen-button
+  {
+    position: fixed;
+    bottom: 5vh;
+    left: 5vh;
+    width: 10vh;
+    height: 10vh;
+    background-size: cover;
+  }
+</style>
+
+<!-- <style>
+  #unity-footer
+  {
+    display: none;
+  }
+  #unity-container
+  {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #unity-canvas
+  {
+    width: 100%;
+    height: 100%;
+  }
+ .landscape
+  {
+    transform: rotate(-90deg) !important;
+    width: 100vw;
+    height: 100vh;
+  }
+</style> -->
