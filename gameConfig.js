@@ -4,6 +4,7 @@ var loadingBar = document.querySelector("#unity-loading-bar");
 var progressBarFull = document.querySelector("#unity-progress-bar-full");
 var fullscreenButton = document.querySelector("#unity-fullscreen-button");
 var warningBanner = document.querySelector("#unity-warning");
+
 function unityShowBanner(msg, type) {
   function updateBannerVisibility() {
     warningBanner.style.display = warningBanner.children.length
@@ -15,8 +16,7 @@ function unityShowBanner(msg, type) {
   warningBanner.appendChild(div);
   if (type == "error") div.style = "background: red; padding: 10px;";
   else {
-    if (type == "warning")
-      div.style = "background: yellow; padding: 10px;";
+    if (type == "warning") div.style = "background: yellow; padding: 10px;";
     setTimeout(function () {
       warningBanner.removeChild(div);
       updateBannerVisibility();
@@ -24,7 +24,23 @@ function unityShowBanner(msg, type) {
   }
   updateBannerVisibility();
 }
-
+function updateScreenOrientation(screenIndex) {}
+let _currentMapIndex = 0;
+setInterval(function () {
+  updateJsSceneIndex(_currentMapIndex);
+}, 1000);
+function updateJsSceneIndex(currentMapIndex) {
+  // _currentMapIndex = currentMapIndex;
+  // const nlitsolutions = document.getElementById("nlitsolutions");
+  // if (!nlitsolutions) return;
+  // const height = window.innerHeight;
+  // const width = window.innerWidth;
+  // if (currentMapIndex <= 2) {
+  //   if (width > height) {
+  //     nlitsolutions.style.maxWidth = `${height / 1.3}px`;
+  //   }
+  // }
+}
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/Builds.loader.js";
 var config = {
@@ -69,7 +85,6 @@ script.onload = () => {
 };
 
 document.body.appendChild(script);
-
 
 window.addEventListener("orientationchange", function () {
   if (window?.orientation === 90 || window?.orientation === -90) {
