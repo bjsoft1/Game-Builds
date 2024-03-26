@@ -30,16 +30,20 @@ setInterval(function () {
   updateJsSceneIndex(_currentMapIndex);
 }, 1000);
 function updateJsSceneIndex(currentMapIndex) {
-  // _currentMapIndex = currentMapIndex;
-  // const nlitsolutions = document.getElementById("nlitsolutions");
-  // if (!nlitsolutions) return;
-  // const height = window.innerHeight;
-  // const width = window.innerWidth;
-  // if (currentMapIndex <= 2) {
-  //   if (width > height) {
-  //     nlitsolutions.style.maxWidth = `${height / 1.3}px`;
-  //   }
-  // }
+  _currentMapIndex = currentMapIndex;
+  //const nlitsolutions = document.getElementById("nlitsolutions");
+  if (!canvas) return;
+  const height = window.innerHeight;
+  const width = window.innerWidth;
+  if (currentMapIndex <= 2) {
+    if (width > height) {
+      canvas.style.maxWidth = `${height / 1.3}px`;
+    }
+  }
+  else
+  {
+    canvas.style.maxWidth = `${width}px`;
+  }
 }
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/Builds.loader.js";
