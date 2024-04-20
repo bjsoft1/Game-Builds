@@ -40,6 +40,13 @@ function updateJsSceneIndex(currentMapIndex) {
       canvas.style.maxWidth = `${height / 1.3}px`;
     }
   }
+  else if(currentMapIndex === 5)
+  {
+    if(width > height)
+    canvas.style.maxWidth = `${height / 1.3}px`;
+    canvas.style.height = `${height}px`;
+
+  }
   else
   {
     canvas.style.maxWidth = `${width}px`;
