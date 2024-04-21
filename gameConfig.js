@@ -38,6 +38,7 @@ function updateJsSceneIndex(currentMapIndex) {
   if (currentMapIndex <= 2) {
     if (width > height) {
       canvas.style.maxWidth = `${height / 1.3}px`;
+      canvas.style.height = `${height}px`;
     }
   }
   else if(currentMapIndex === 5)
@@ -50,6 +51,7 @@ function updateJsSceneIndex(currentMapIndex) {
   else
   {
     canvas.style.maxWidth = `${width}px`;
+    canvas.style.height = `${height}px`;
   }
 }
 var buildUrl = "Build";
